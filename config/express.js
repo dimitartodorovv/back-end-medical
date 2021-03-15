@@ -3,7 +3,6 @@ const cors = require("cors");
 const cookieParser = require('cookie-parser');
 const configCors = require("./corsConfig");
 const { urlencoded } = require("express");
-const middleWare = require("../middleWares/authentication");
 
 module.exports = (app) => {
 
@@ -23,5 +22,4 @@ module.exports = (app) => {
     
     app.use(cookieParser());
 
-    app.use(middleWare());
   }
