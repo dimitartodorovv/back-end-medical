@@ -44,13 +44,16 @@ async function errorRegHandler(data) {
 
 async function errorLoginHandler(data) {
 
-    let { email, password } = data;
+    let { email, password, rePass } = data;
 
     let emails = email.toLowerCase();
     let pass = password.trim();
 
     let emailUser = await session.findOne({ email: emails })
 
+    if(password !== rePass) {
+        throw {message: "Passwords is not match!"}
+    }
 
     if (!emailUser) {
         throw { message: "Email is not correct! :)" }

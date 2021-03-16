@@ -37,7 +37,8 @@ router.post("/login", isGuest,(req,res) => {
             email: data.email
         });
     }).catch(err => {
-        res.send(404).json({error: err.message})
+        console.log(err);
+        res.status(404).json({error: err.message})
     })
 
 });
