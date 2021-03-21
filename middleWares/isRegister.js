@@ -12,7 +12,7 @@ module.exports = async function (req, res, next) {
 
     const token = req.cookies[COOKIE_NAME];
     let checkForNewCookie = true;
-
+  
     if (!token) {
         res.status(typeError(404)).json(messageError("You are not authorized!"));
         return
