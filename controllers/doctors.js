@@ -21,7 +21,6 @@ router.get("/", (req,res) => {
 router.get("/search/:id", isRegister, (req,res) => {
     
     const id = req.params.id;
-    console.log(1);
     doctors.getOne(id).then(data => {
         
         res.status(200).json({data})

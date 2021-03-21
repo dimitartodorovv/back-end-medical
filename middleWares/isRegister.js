@@ -40,7 +40,7 @@ module.exports = async function (req, res, next) {
 
     const stats = await verifyUser(token)
     
-
+        console.log(stats, checkForNewCookie);
     if (checkForNewCookie && stats.error) {
         console.log("DELETE COOKIE");
         res.clearCookie(COOKIE_NAME)
