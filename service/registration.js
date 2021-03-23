@@ -1,5 +1,4 @@
 const session = require("../mongooseSchemas/userReg");
-const refreshToken = require("../mongooseSchemas/refToken");
 const errHandler = require("../helper/errorHandler");
 const bcrypt = require("bcrypt");
 const {SALT} = require("../config/config");

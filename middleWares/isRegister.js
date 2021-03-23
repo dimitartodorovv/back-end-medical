@@ -11,21 +11,21 @@ module.exports = async function (req, res, next) {
     console.log("REGISTER AUTHENTICATION");
 
     const token = req.cookies[COOKIE_NAME];
-    let checkForNewCookie = true;
-  
+    let checkForNewCookie = false;
+    let stats = '';
     if (!token) {
         res.status(typeError(404)).json(messageError("You are not authorized!"));
         return
     }
 
     const dec = jwt.decode(token);
-
+   console.log(dec);
     if (timeForRefToken(dec.exp) >= REFRESH_TIME) {
-        console.log(timeForRefToken(dec.exp) >= REFRESH_TIME);
+      
         const result = await refUserToken(token, dec.id)
-        
+            
         if (result.error) {
-            console.log("YES");
+            console.log("ERROR_REFRESH TOKEN");
             res.clearCookie(COOKIE_NAME)
             res.status(typeError(404)).json(messageError(result.error));
 
@@ -33,14 +33,13 @@ module.exports = async function (req, res, next) {
         }
         console.log("REFRESH TOKEN NOW");
         const newToken = result;
+        
         res.cookie(COOKIE_NAME,newToken);
         checkForNewCookie = false;
     }
-
-
-    const stats = await verifyUser(token)
     
-        console.log(stats, checkForNewCookie);
+        stats = await verifyUser(token);   
+
     if (checkForNewCookie && stats.error) {
         console.log("DELETE COOKIE");
         res.clearCookie(COOKIE_NAME)
@@ -49,6 +48,6 @@ module.exports = async function (req, res, next) {
         return
     }
 
-
+   
     next()
 }

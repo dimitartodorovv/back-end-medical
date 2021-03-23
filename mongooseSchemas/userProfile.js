@@ -3,6 +3,9 @@ const mongoose = require("mongoose");
 
 const userProfile = new mongoose.Schema({
 
+    name: {
+        type: String
+    },
     dateOfBirth: {
         type: String
     },
@@ -21,7 +24,7 @@ const userProfile = new mongoose.Schema({
     hairColor: {
         type: String,
     },
-    user: {
+    userID: {
         type: mongoose.Types.ObjectId,
         ref: "session"
     }

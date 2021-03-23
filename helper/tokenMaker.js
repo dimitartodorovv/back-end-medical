@@ -36,7 +36,7 @@ async function refreshTokenUser(id) {
 
     refreshToken.expires = new Date(Date.now() + 7*24*60*60*1000);
 
-     await refreshToken.save()
+     return await refreshToken.save();
 }
 
 // async function revokeToken(token , ipAddress) {
