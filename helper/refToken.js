@@ -7,6 +7,7 @@ const {SECRET_KEY} = require("../config/config");
 
 module.exports = async function (token,id) {
 
+    console.log(id);
     const refToken = await refreshToken.findOne({ user: id });
     console.log(refToken);
     if(!refToken) {

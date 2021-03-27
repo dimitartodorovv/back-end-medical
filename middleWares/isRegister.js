@@ -23,7 +23,7 @@ module.exports = async function (req, res, next) {
     if (timeForRefToken(dec.exp) >= REFRESH_TIME) {
       
         const result = await refUserToken(token, dec.id)
-            
+            console.log(result,"FOR REFRESH TOKEN");
         if (result.error) {
             console.log("ERROR_REFRESH TOKEN");
             res.clearCookie(COOKIE_NAME)

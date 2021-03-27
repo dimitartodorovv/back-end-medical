@@ -29,8 +29,6 @@ const userProfile = new mongoose.Schema({
         ref: "session"
     }
 
-
-
 });
 
 module.exports = mongoose.model("userProfile", userProfile);
