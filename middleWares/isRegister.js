@@ -13,13 +13,24 @@ module.exports = async function (req, res, next) {
     const token = req.cookies[COOKIE_NAME];
     let checkForNewCookie = false;
     let stats = '';
+    let dec = {
+        exp: -116309
+    };
     if (!token) {
         res.status(typeError(404)).json(messageError("You are not authorized!"));
         return
     }
 
-    const dec = jwt.decode(token);
-   console.log(dec);
+    try {
+        console.log("CHECK FOR TIME ");
+        dec = jwt.verify(token, SECRET_KEY);
+        
+    } catch (error) {
+        console.log(error);
+        console.log("RES");
+        dec.exp = -116304
+    }
+    console.log(dec);
     if (timeForRefToken(dec.exp) >= REFRESH_TIME) {
       
         const result = await refUserToken(token, dec.id)

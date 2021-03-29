@@ -21,6 +21,12 @@ const doctorReg = new mongoose.Schema({
     education: {
         type: String
     },
+    workDates: [
+
+    ],
+    workHours: [
+        
+    ],
     biography: {
         type: String
     }

@@ -1,10 +1,18 @@
 const mongoose = require("mongoose");
 
 
-const reserveTime = new mongoose.Schema({
+const reserveTimeDoc = new mongoose.Schema({
     doctorName: {
         type: String,
         require: true
+    },
+    specialty: {
+        type: String,
+        require: true
+    },
+    docID: {
+        type: mongoose.Types.ObjectId,
+        ref: "doctors"
     },
     date: {
         type: String,
@@ -18,11 +26,15 @@ const reserveTime = new mongoose.Schema({
         type: String,
         require: true
     },
+    visit: {
+        type: String,
+        require: true
+    },
     user: {
-        type: mongoose.Types._ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: "session"
     }
 })
 
 
-module.exports = mongoose.model("reserveTime", reserveTime)
+module.exports = mongoose.model("reserveTime", reserveTimeDoc)

@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 module.exports = () => {
     
     const uri = "mongodb://localhost/docCon";
-    mongoose.connect(uri,  {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+    mongoose.connect(uri,  {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false});
 
     const db = mongoose.connection;
 
@@ -12,6 +12,4 @@ module.exports = () => {
         console.log(`Connect DB`);
     });
 }
-
-
 

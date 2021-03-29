@@ -30,5 +30,17 @@ router.get("/search/:id", isRegister, (req,res) => {
 
 });
 
+router.post("/remove/hour", isRegister , (req,res) => {
+
+    const id = req.body.docID;
+    const time = req.body.time;
+
+        doctors.delHour(id,time).then(data => {
+            res.status(200).json({message: "Remove this hour"})
+        }).catch(err => {
+            console.log(err);
+            res.status(404).json({error: err.messsage})
+        })
+});
 
 module.exports = router;
