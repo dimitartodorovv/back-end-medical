@@ -3,7 +3,8 @@ const config = {
     SALT: 8,
     SECRET_KEY: "k23j4k5j65o6i5u5b",
     COOKIE_NAME: "userSession",
-    REFRESH_TIME: -116306
+    REFRESH_TIME: -116306,
+    TOKEN_TIME: "1h"
 }
 
 

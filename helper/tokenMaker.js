@@ -1,12 +1,12 @@
 const jwt = require('jsonwebtoken');
-const {SECRET_KEY} = require("../config/config");
+const {SECRET_KEY,TOKEN_TIME} = require("../config/config");
 const refToken = require("../mongooseSchemas/refToken");
 const {nanoid} = require("nanoid");
 
  function tokenMaker(data) {
 
     let payload = data;
-    let optians = {expiresIn: "1h"};
+    let optians = {expiresIn: `${TOKEN_TIME}`};
     
    const token = jwt.sign(payload,SECRET_KEY,optians);
     

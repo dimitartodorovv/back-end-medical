@@ -30,10 +30,13 @@ module.exports = async function (req, res, next) {
         console.log("RES");
         dec.exp = -116304
     }
-    console.log(dec);
+    
     if (timeForRefToken(dec.exp) >= REFRESH_TIME) {
-      
-        const result = await refUserToken(token, dec.id)
+
+        const restart = jwt.decode(token,{complete: true})
+ 
+
+        const result = await refUserToken(token, restart.payload.id)
             console.log(result,"FOR REFRESH TOKEN");
         if (result.error) {
             console.log("ERROR_REFRESH TOKEN");

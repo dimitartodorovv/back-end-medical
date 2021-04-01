@@ -7,9 +7,9 @@ const {SECRET_KEY} = require("../config/config");
 
 module.exports = async function (token,id) {
 
-    console.log(id);
+    
     const refToken = await refreshToken.findOne({ user: id });
-    console.log(refToken);
+    
     if(!refToken) {
         return {error: "This user doesnt have token"}
     }
@@ -29,15 +29,15 @@ module.exports = async function (token,id) {
 
    try {
     
-       const decoded =  jwt.decode(token,SECRET_KEY);
+       const decoded =  jwt.decode(token,{complete: true});
           
-       const user = await userSession.findOne({_id: decoded.id});  
-        console.log(user);
+       const user = await userSession.findOne({_id: decoded.payload.id});  
+       
        if(!user) {
             throw new Error()
         }
         
-       const newToken = tokenMaker({decoded});
+       const newToken = tokenMaker(user);
 
        return newToken
    } catch (error) {

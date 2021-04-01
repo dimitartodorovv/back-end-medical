@@ -7,7 +7,6 @@ module.exports = function (req,res,next) {
        
         const token = req.cookies[COOKIE_NAME];
 
-        console.log(token);
     
           if(token) {
                 res.status(typeError(404)).json(messageError("You are loged!"));
