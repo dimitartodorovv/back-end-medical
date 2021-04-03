@@ -10,14 +10,14 @@ const isRegister = require("../middleWares/isRegister");
 router.post("/registration", isGuest, (req,res) => {
     
     const ip = req.headers['x-forwarded-for'] || req.ip;
-    
+   
     authentication.addUser(req.body).then(data => {
         token.genRefreshToken(data._id,ip);
         res.status(201).json({
             data: data,
             message: "Successful Registration!"})
     }).catch(err => {
-       
+       console.log(err);
         res.status(404).json({error: err.message})
     })
     

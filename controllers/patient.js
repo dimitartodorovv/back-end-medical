@@ -5,11 +5,11 @@ const patientsData = require("../service/patientFn");
 
 router.post("/", isRegister, (req,res) => {
 
-
     patientsData.addUserData(req.body).then(data => { 
-        
+        console.log(data);
         res.status(201).json({data})
     }).catch(err => {
+        console.log(err);
         res.status(404).json({error: err.message})
     });
 
@@ -33,11 +33,11 @@ router.post("/edit/:id", isRegister, (req,res) => {
 
     const id = req.params.id;
     const data = req.body;
-    
-        patientsData.changeSetings(data,id).then(data => {
-            
+  
+        patientsData.changeSetings(data,id).then(data => {        
             res.status(200).json({data})
         }).catch(err => {
+            console.log(err);
             res.status(404).json({error: err.message})
         });
 });

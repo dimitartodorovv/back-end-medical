@@ -6,7 +6,6 @@ const registration = require("./controllers/registration");
 const doctros = require("./controllers/doctors");
 const patient = require("./controllers/patient");
 const appointmentTime = require("./controllers/appointment");
-const router = require("./controllers/patient");
 
 
 

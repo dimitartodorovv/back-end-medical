@@ -6,7 +6,7 @@ const { REGEX_EMAIL } = require("../config/config.js");
 async function errorRegHandler(data) {
 
     let { email, username, password, rePass } = data;
-    console.log(data);
+ 
     let emailUser = email.toLowerCase();
     let userNames = username.toLowerCase();
     let pass = password.trim();

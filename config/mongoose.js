@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
+const mon = require("../config/port")
 
 module.exports = () => {
-    
+
     const uri = "mongodb://localhost/docCon";
-    mongoose.connect(uri,  {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false});
+    mongoose.connect(mon.mongooCN || uri,  {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false});
 
     const db = mongoose.connection;
 

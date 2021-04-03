@@ -11,6 +11,7 @@ module.exports = async function (req, res, next) {
     console.log("REGISTER AUTHENTICATION");
 
     const token = req.cookies[COOKIE_NAME];
+    console.log(token);
     let checkForNewCookie = false;
     let stats = '';
     let dec = {
@@ -22,11 +23,11 @@ module.exports = async function (req, res, next) {
     }
 
     try {
-        console.log("CHECK FOR TIME ");
+    
         dec = jwt.verify(token, SECRET_KEY);
         
     } catch (error) {
-        console.log(error);
+
         console.log("RES");
         dec.exp = -116304
     }
